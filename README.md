@@ -1,4 +1,4 @@
-# flutter-dynamic-translator
+# flutter_dynamic_translator
 
 A Flutter plugin for dynamic translation based on locale files. This plugin allows you to load translation files (e.g., `.arb` files) dynamically based on the current locale and display the translated text throughout your Flutter application.
 
@@ -10,7 +10,7 @@ A Flutter plugin for dynamic translation based on locale files. This plugin allo
 
 ## Installation
 
-To install `flutter-dynamic-translator`, add it as a dependency in your `pubspec.yaml` file:
+To install `flutter_dynamic_translator`, add it as a dependency in your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
