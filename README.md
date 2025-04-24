@@ -14,7 +14,7 @@ A lightweight and simple dynamic translation loader for Flutter apps using `.arb
 - ❌ No `intl` or `flutter_localizations` dependency required
 - 📁 Minimal folder structure
 
----
+```
 
 ## 📂 Project Structure
 
@@ -29,7 +29,7 @@ flutter-dynamic-translator/
 ├── pubspec.yaml
 └── README.md
 
----
+```
 
 ## 📦 Getting Started
 
