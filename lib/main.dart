@@ -1,28 +1,49 @@
 import 'package:flutter/material.dart';
-import 'dynamic_translator.dart'; // Import the dynamic translation logic
+import 'dynamic_translator.dart';
 
 void main() async {
-  // Set the initial locale (in this case 'ko' for Korean)
-  String locale = 'ko'; // The locale can be dynamically set based on user preferences
-  await T.load(locale); // Load the translation file for the selected locale
-
+  WidgetsFlutterBinding.ensureInitialized();
+  await T.load('ko');
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  String currentLocale = 'ko';
+
+  void changeLocale(String newLocale) async {
+    await T.load(newLocale);
+    setState(() {
+      currentLocale = newLocale;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Dynamic Translator',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+      home: MyHomePage(
+        currentLocale: currentLocale,
+        onLocaleChanged: changeLocale,
       ),
-      home: MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatelessWidget {
+  final String currentLocale;
+  final Function(String) onLocaleChanged;
+
+  const MyHomePage({
+    Key? key,
+    required this.currentLocale,
+    required this.onLocaleChanged,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,35 +54,27 @@ class MyHomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Display the translated text based on the selected locale
             Text(
-              T.get('hello_world'), // Fetch the translation for the key 'hello_world'
+              T.get('hello_world'),
               style: TextStyle(fontSize: 24),
             ),
             SizedBox(height: 20),
-            LanguageSelector(), // Language selector widget to change the locale
+            DropdownButton<String>(
+              value: currentLocale,
+              items: [
+                DropdownMenuItem(value: 'ko', child: Text('Korean')),
+                DropdownMenuItem(value: 'en', child: Text('English')),
+                DropdownMenuItem(value: 'mn', child: Text('Mongolian')),
+              ],
+              onChanged: (newValue) {
+                if (newValue != null) {
+                  onLocaleChanged(newValue);
+                }
+              },
+            ),
           ],
         ),
       ),
-    );
-  }
-}
-
-// A widget to allow the user to select a language
-class LanguageSelector extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return DropdownButton<String>(
-      value: 'ko', // Currently selected language
-      items: [
-        DropdownMenuItem(value: 'ko', child: Text('Korean')),
-        DropdownMenuItem(value: 'en', child: Text('English')),
-        DropdownMenuItem(value: 'mn', child: Text('Mongolian')),
-      ],
-      onChanged: (newValue) async {
-        await T.load(newValue!); // Load the selected language's translation file
-        (context as Element).reassemble(); // Rebuild the widget to reflect the new translations
-      },
     );
   }
 }
