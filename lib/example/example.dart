@@ -3,7 +3,7 @@ import 'package:flutter_dynamic_translator/flutter_dynamic_translator.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await T.load('ko'); // Эхэндээ Korean хэл ачаалж байна
+  await T.load('ko'); // Load Korean language initially
   runApp(MyApp());
 }
 
@@ -13,13 +13,13 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String currentLocale = 'ko'; // Эхний хэл Korean байна
+  String currentLocale = 'ko'; // Default language is Korean
 
-  // Хэл солих функц
+  // Function to change the language
   void changeLocale(String newLocale) async {
-    await T.load(newLocale); // Шинэ хэлд тохирох орчуулга татаж авах
+    await T.load(newLocale); // Load the translation for the new language
     setState(() {
-      currentLocale = newLocale; // Шинэ хэлтэй тохирох текстийг харуулах
+      currentLocale = newLocale; // Update the language for the UI
     });
   }
 
@@ -28,16 +28,17 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'Flutter Dynamic Translator',
       home: MyHomePage(
-        currentLocale: currentLocale,
-        onLocaleChanged: changeLocale,
+        currentLocale: currentLocale, // Pass current language
+        onLocaleChanged: changeLocale, // Function to change language
       ),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  final String currentLocale;
-  final Function(String) onLocaleChanged;
+class MyHomePage extends StatelessWidget {
+  // Changed to StatelessWidget
+  final String currentLocale; // Holds the current language
+  final Function(String) onLocaleChanged; // Function to change the language
 
   const MyHomePage({
     Key? key,
@@ -46,29 +47,24 @@ class MyHomePage extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Dynamic Translation Example'),
+        title: Text('Dynamic Translation Example'), // App bar title
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Орчуулга гаргах хэсэг
+            // Display the translation for "hello_world" key
             Text(
-              T.get('hello_world'), // "hello_world" түлхүүрийн орчуулгыг авах
+              T.get('hello_world'), // Get the translation for "hello_world"
               style: TextStyle(fontSize: 24),
             ),
             SizedBox(height: 20),
-            // Хэл сонгох Dropdown
+            // Dropdown to select the language
             DropdownButton<String>(
-              value: widget.currentLocale, // Одоогийн хэл
+              value: currentLocale, // Currently selected language
               items: [
                 DropdownMenuItem(value: 'ko', child: Text('Korean')),
                 DropdownMenuItem(value: 'en', child: Text('English')),
@@ -76,7 +72,8 @@ class _MyHomePageState extends State<MyHomePage> {
               ],
               onChanged: (newValue) {
                 if (newValue != null) {
-                  widget.onLocaleChanged(newValue); // Хэл солих функц
+                  onLocaleChanged(
+                      newValue); // Change the language when selected
                 }
               },
             ),
