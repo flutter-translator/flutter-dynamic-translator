@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dynamic_translator/flutter_dynamic_translator.dart';
-import 'package:flutter/material.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
