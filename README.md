@@ -84,7 +84,8 @@ await T.load('en');
 
 ```
 
-Tip
-Translation keys fallback to the key itself if not found.
+🧠 Tip
 
-You can dynamically load locales based on user settings or device locale.
+- Translation keys fallback to the key itself if not found.
+
+- You can dynamically load locales based on user settings or device locale.
