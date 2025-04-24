@@ -83,7 +83,7 @@ class MyApp extends StatelessWidget {
 }
 ```
 
-## Supported Languages
+## Languages
 
 - English (`en`)
 - Korean (`ko`)
