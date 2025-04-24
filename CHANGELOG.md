@@ -1,3 +1,5 @@
-## 0.0.1
+## [1.0.0] - 2025-04-24
 
-* TODO: Describe initial release.
+- Initial release of `flutter_dynamic_translator`.
+- Supports dynamic .arb translation file loading.
+- Simple language switcher support.
