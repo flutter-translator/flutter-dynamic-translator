@@ -1,0 +1,13 @@
+name: flutter_dynamic_translator
+description: A Flutter project for dynamic translations.
+
+dependencies:
+  flutter:
+    sdk: flutter
+  #flutter_localizations:
+  #  sdk: flutter
+  #intl: ^0.17.0
+
+flutter:
+  assets:
+    - assets/lang/
