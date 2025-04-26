@@ -1,3 +1,7 @@
+## [1.0.4] - 2025-04-25
+
+- Added Platform support
+
 ## [1.0.3] - 2025-04-24
 
 - Editied example
