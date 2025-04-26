@@ -1,6 +1,6 @@
 name: flutter_dynamic_translator
 description: "A Flutter plugin for dynamic translation based on locale files."
-version: 1.0.4
+version: 1.0.5
 homepage: https://github.com/flutter-translator/flutter-dynamic-translator
 repository: https://github.com/flutter-translator/flutter-dynamic-translator
 issue_tracker: https://github.com/flutter-translator/flutter-dynamic-translator/issues

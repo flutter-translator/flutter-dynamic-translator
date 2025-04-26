@@ -1,3 +1,7 @@
+## [1.0.5] - 2025-04-25
+
+- Made dart format
+
 ## [1.0.4] - 2025-04-25
 
 - Added Platform support
