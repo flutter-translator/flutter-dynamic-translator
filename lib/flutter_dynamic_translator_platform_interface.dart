@@ -8,7 +8,8 @@ abstract class FlutterDynamicTranslatorPlatform extends PlatformInterface {
 
   static final Object _token = Object();
 
-  static FlutterDynamicTranslatorPlatform _instance = MethodChannelFlutterDynamicTranslator();
+  static FlutterDynamicTranslatorPlatform _instance =
+      MethodChannelFlutterDynamicTranslator();
 
   /// The default instance of [FlutterDynamicTranslatorPlatform] to use.
   ///
