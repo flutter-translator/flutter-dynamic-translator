@@ -8,11 +8,13 @@ void main() async {
 }
 
 class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+
   @override
-  _MyAppState createState() => _MyAppState();
+  MyAppState createState() => MyAppState();
 }
 
-class _MyAppState extends State<MyApp> {
+class MyAppState extends State<MyApp> {
   String currentLocale = 'ko'; // Default language is Korean
 
   // Function to change the language
@@ -41,10 +43,10 @@ class MyHomePage extends StatelessWidget {
   final Function(String) onLocaleChanged; // Function to change the language
 
   const MyHomePage({
-    Key? key,
+    super.key,
     required this.currentLocale,
     required this.onLocaleChanged,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

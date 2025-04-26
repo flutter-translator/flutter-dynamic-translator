@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 
-import 'package:flutter/services.dart';
 import 'package:flutter_dynamic_translator/flutter_dynamic_translator.dart';
 
 void main() {
@@ -16,34 +15,28 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String _platformVersion = 'Unknown';
-  final _flutterDynamicTranslatorPlugin = FlutterDynamicTranslator();
+  String _translatedText = 'Loading translation...';
 
   @override
   void initState() {
     super.initState();
-    initPlatformState();
+    _loadTranslations();
   }
 
-  // Platform messages are asynchronous, so we initialize in an async method.
-  Future<void> initPlatformState() async {
-    String platformVersion;
-    // Platform messages may fail, so we use a try/catch PlatformException.
-    // We also handle the message potentially returning null.
+  // Function to load translations
+  Future<void> _loadTranslations() async {
+    String translation;
     try {
-      platformVersion =
-          await _flutterDynamicTranslatorPlugin.getPlatformVersion() ?? 'Unknown platform version';
-    } on PlatformException {
-      platformVersion = 'Failed to get platform version.';
+      await T.load('en'); // Load the English translations
+      translation = T.get('hello_world'); // Get a translated string
+    } catch (e) {
+      translation = 'Failed to load translation.';
     }
 
-    // If the widget was removed from the tree while the asynchronous platform
-    // message was in flight, we want to discard the reply rather than calling
-    // setState to update our non-existent appearance.
     if (!mounted) return;
 
     setState(() {
-      _platformVersion = platformVersion;
+      _translatedText = translation;
     });
   }
 
@@ -52,10 +45,10 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Plugin example app'),
+          title: const Text('Flutter Dynamic Translator Example'),
         ),
         body: Center(
-          child: Text('Running on: $_platformVersion\n'),
+          child: Text('Translated Text: $_translatedText\n'),
         ),
       ),
     );

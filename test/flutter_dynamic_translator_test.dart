@@ -7,8 +7,6 @@ void main() {
   TestWidgetsFlutterBinding
       .ensureInitialized(); // Ensure that the binding is initialized
 
-  const MethodChannel channel = MethodChannel('flutter_dynamic_translator');
-
   setUp(() {
     // This is where you can prepare any necessary setup before each test runs
   });
@@ -22,7 +20,8 @@ void main() {
     };
 
     // Mock the asset loading to simulate reading from 'assets/lang/en.arb'
-    ServicesBinding.instance.defaultBinaryMessenger.setMockMessageHandler(
+    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+        .setMockMessageHandler(
       'flutter/assets',
       (message) async {
         final String key = const StringCodec().decodeMessage(message)!;
