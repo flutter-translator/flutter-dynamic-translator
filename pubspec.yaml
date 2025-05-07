@@ -23,7 +23,6 @@ dev_dependencies:
 flutter:
   plugin:
     platforms:
-    platforms:
       android:
         default_package: flutter_dynamic_translator
       ios:
