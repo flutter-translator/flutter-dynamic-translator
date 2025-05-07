@@ -1,3 +1,7 @@
+## [1.0.6] - 2025-04-25
+
+- Added pluginClass for andriod, ios
+
 ## [1.0.5] - 2025-04-25
 
 - Made dart format
