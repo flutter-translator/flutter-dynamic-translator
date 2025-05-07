@@ -1,3 +1,7 @@
+## [1.0.10] - 2025-04-25
+
+- Made it for any platform
+
 ## [1.0.9] - 2025-04-25
 
 - Made it for any platform - fixed
