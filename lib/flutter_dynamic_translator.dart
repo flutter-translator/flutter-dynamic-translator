@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/services.dart';
 
 class T {
@@ -8,7 +7,7 @@ class T {
   static const MethodChannel _channel =
       MethodChannel('flutter_dynamic_translator');
 
-  // Getting the platform version
+  // Optional function: get platform version (if needed)
   static Future<String?> getPlatformVersion() async {
     try {
       final String? version = await _channel.invokeMethod('getPlatformVersion');

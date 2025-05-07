@@ -1,3 +1,7 @@
+## [1.0.7] - 2025-04-25
+
+- Made it for any platform
+
 ## [1.0.6] - 2025-04-25
 
 - Added pluginClass for andriod, ios
